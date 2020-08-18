@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MainViewHolder {
             val itemView = LayoutInflater.from(this@MainActivity)
-                .inflate(R.layout.item_main, null)
+                .inflate(R.layout.item_main, parent, false)
             return MainViewHolder(itemView)
         }
 
