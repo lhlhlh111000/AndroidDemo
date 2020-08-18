@@ -8,9 +8,10 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.pig.android.demo.case.Android11Activity
+import com.pig.android.demo.case.NotificationActivity
 import com.pig.android.demo.extends.go
 import com.pig.android.demo.model.Item
-import com.pig.android.demo.notification.NotificationActivity
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
@@ -32,6 +33,10 @@ class MainActivity : AppCompatActivity() {
 
         items.add(Item("Notification") {
             go<NotificationActivity>()
+        })
+
+        items.add(Item("Android11") {
+            go<Android11Activity>()
         })
     }
 

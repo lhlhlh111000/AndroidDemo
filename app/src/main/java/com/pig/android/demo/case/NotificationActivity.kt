@@ -1,4 +1,4 @@
-package com.pig.android.demo.notification
+package com.pig.android.demo.case
 
 import android.app.NotificationChannel
 import android.app.NotificationManager

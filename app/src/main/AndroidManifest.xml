@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".notification.NotificationActivity"/>
+        <activity android:name=".case.NotificationActivity"/>
+        <activity android:name=".case.Android11Activity"/>
     </application>
 
 </manifest>
