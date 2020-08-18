@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.1"
 
     defaultConfig {
-        applicationId "com.pig.android.notification"
+        applicationId "com.pig.android.demo"
         minSdkVersion 18
         targetSdkVersion 30
         versionCode 1

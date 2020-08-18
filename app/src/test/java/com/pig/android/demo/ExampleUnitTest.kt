@@ -1,4 +1,4 @@
-package com.pig.android.notification
+package com.pig.android.demo
 
 import org.junit.Test
 
