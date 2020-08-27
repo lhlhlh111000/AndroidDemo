@@ -21,6 +21,9 @@
 
         <activity android:name=".case.NotificationActivity"/>
         <activity android:name=".case.Android11Activity"/>
+        <activity
+            android:name=".case.AutoCompleteInputActivity"
+            android:configChanges="orientation|screenSize|keyboardHidden"/>
     </application>
 
 </manifest>

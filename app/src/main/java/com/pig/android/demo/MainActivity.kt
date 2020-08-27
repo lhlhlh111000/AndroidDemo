@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.pig.android.demo.case.Android11Activity
+import com.pig.android.demo.case.AutoCompleteInputActivity
+import com.pig.android.demo.case.AutoCompleteInputDialog
 import com.pig.android.demo.case.NotificationActivity
 import com.pig.android.demo.extends.go
 import com.pig.android.demo.model.Item
@@ -37,6 +39,15 @@ class MainActivity : AppCompatActivity() {
 
         items.add(Item("Android11") {
             go<Android11Activity>()
+        })
+
+        items.add(Item("AutoCompleteTextView_Bug") {
+            go<AutoCompleteInputActivity>()
+        })
+
+        items.add(Item("AutoCompleteTextView_Bug_2") {
+            val dialog = AutoCompleteInputDialog(AutoCompleteInputActivity@this)
+            dialog.show();
         })
     }
 
