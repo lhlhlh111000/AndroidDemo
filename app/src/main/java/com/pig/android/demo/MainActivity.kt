@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.pig.android.demo.case.*
+import com.pig.android.demo.case.proxy.ProxyFragment
 import com.pig.android.demo.extends.go
 import com.pig.android.demo.extends.goFragment
 import com.pig.android.demo.model.Item
@@ -54,6 +55,9 @@ class MainActivity : AppCompatActivity() {
         })
         items.add(Item("Coordinatorlayout") {
             goFragment<CoordinatorlayoutFragment>()
+        })
+        items.add(Item("Proxy") {
+            goFragment<ProxyFragment>()
         })
     }
 
