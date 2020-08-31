@@ -8,11 +8,9 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.pig.android.demo.case.Android11Activity
-import com.pig.android.demo.case.AutoCompleteInputActivity
-import com.pig.android.demo.case.AutoCompleteInputDialog
-import com.pig.android.demo.case.NotificationActivity
+import com.pig.android.demo.case.*
 import com.pig.android.demo.extends.go
+import com.pig.android.demo.extends.goFragment
 import com.pig.android.demo.model.Item
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -46,8 +44,13 @@ class MainActivity : AppCompatActivity() {
         })
 
         items.add(Item("AutoCompleteTextView_Bug_2") {
-            val dialog = AutoCompleteInputDialog(AutoCompleteInputActivity@this)
+            val dialog = AutoCompleteInputDialog(this)
             dialog.show();
+        })
+        items.add(Item("ContainerActivity") {
+            val bundle = Bundle()
+            bundle.putString(TestContainerFragment.TEXT, "Text from bundle")
+            goFragment<TestContainerFragment>(bundle)
         })
     }
 

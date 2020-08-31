@@ -3,6 +3,8 @@ package com.pig.android.demo.extends
 import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
+import androidx.fragment.app.Fragment
+import com.pig.android.demo.ContainerActivity
 
 /**
  * Title:
@@ -14,6 +16,15 @@ import android.os.Bundle
  */
 inline fun <reified T : Activity> Activity.go(bundle: Bundle? = null) {
     val intent = Intent(this, T::class.java)
+    bundle?.let {
+        intent.putExtras(it)
+    }
+    startActivity(intent)
+}
+
+inline fun <reified T : Fragment> Activity.goFragment(bundle: Bundle? = null) {
+    val intent = Intent(this, ContainerActivity::class.java)
+    intent.putExtra(ContainerActivity.FRAGMENT_NAME, T::class.qualifiedName)
     bundle?.let {
         intent.putExtras(it)
     }
