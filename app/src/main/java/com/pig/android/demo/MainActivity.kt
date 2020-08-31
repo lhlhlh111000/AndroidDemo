@@ -52,6 +52,9 @@ class MainActivity : AppCompatActivity() {
             bundle.putString(TestContainerFragment.TEXT, "Text from bundle")
             goFragment<TestContainerFragment>(bundle)
         })
+        items.add(Item("Coordinatorlayout") {
+            goFragment<CoordinatorlayoutFragment>()
+        })
     }
 
     inner class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {
