@@ -7,6 +7,7 @@ class PigDemoPlugin implements Plugin<Project> {
 
     @Override
     void apply(Project project) {
+        println("hello\n")
 
     }
 }
