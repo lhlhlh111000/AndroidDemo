@@ -41,6 +41,6 @@ class MetaFragment : Fragment() {
             activityInfo.metaData.getString("channel")
         }
 
-        return if(channel.isNullOrEmpty()) "Empty" else channel
+        return channel ?: "Empty"
     }
 }
