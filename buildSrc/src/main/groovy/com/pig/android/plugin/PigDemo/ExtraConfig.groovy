@@ -6,6 +6,8 @@ class ExtraConfig {
 
     public String msg
 
+    public String channelID;
+
     @Override
     String toString() {
         return "assetsDir: $assetsPathDir, Msg: $msg"

@@ -59,6 +59,9 @@ class MainActivity : AppCompatActivity() {
         items.add(Item("Proxy") {
             goFragment<ProxyFragment>()
         })
+        items.add(Item("MetaValue") {
+            goFragment<MetaFragment>()
+        })
     }
 
     inner class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {
