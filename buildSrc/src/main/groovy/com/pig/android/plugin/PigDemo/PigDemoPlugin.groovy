@@ -20,5 +20,8 @@ class PigDemoPlugin implements Plugin<Project> {
         project.dependencies.add("androidTestImplementation", "androidx.test.ext:junit:1.1.1")
         project.dependencies.add("androidTestImplementation", "androidx.test.espresso:espresso-core:3.2.0")
 
+        println(project.getRootDir().getAbsolutePath())
+        File assetsDir = new File(project.getRootDir().getAbsolutePath() + "/tmp/pig/assets")
+        project.android.sourceSets.main.assets.srcDirs += assetsDir
     }
 }
