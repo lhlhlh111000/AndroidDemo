@@ -1,0 +1,8 @@
+apply plugin: 'com.pig.android.plugin'
+
+extraConfig {
+
+    assetsPathDir=rootProject.getRootDir().getAbsolutePath() + "/tmp/pig/assets"
+
+    msg='hello'
+}

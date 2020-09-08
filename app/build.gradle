@@ -1,8 +1,7 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
-
-apply plugin: 'com.pig.android.plugin'
+apply from: 'ExtraConfig.gradle'
 
 android {
     compileSdkVersion 30

@@ -7,6 +7,7 @@ class PigDemoPlugin implements Plugin<Project> {
 
     @Override
     void apply(Project project) {
+        println("hello")
         project.dependencies.add("implementation", "androidx.appcompat:appcompat:1.2.0")
         project.dependencies.add("implementation", "androidx.core:core-ktx:1.3.1")
         project.dependencies.add("implementation", "androidx.constraintlayout:constraintlayout:1.1.3")
@@ -20,8 +21,15 @@ class PigDemoPlugin implements Plugin<Project> {
         project.dependencies.add("androidTestImplementation", "androidx.test.ext:junit:1.1.1")
         project.dependencies.add("androidTestImplementation", "androidx.test.espresso:espresso-core:3.2.0")
 
-        println(project.getRootDir().getAbsolutePath())
-        File assetsDir = new File(project.getRootDir().getAbsolutePath() + "/tmp/pig/assets")
-        project.android.sourceSets.main.assets.srcDirs += assetsDir
+        ExtraConfig extraConfig = project.extensions.create("extraConfig", ExtraConfig)
+        project.afterEvaluate {
+            String assetsDir = extraConfig.assetsPathDir
+            if(null != assetsDir) {
+                println(assetsDir)
+                project.android.sourceSets.main.assets.srcDirs += new File(assetsDir)
+            }else {
+                println("assets config is null")
+            }
+        }
     }
 }
