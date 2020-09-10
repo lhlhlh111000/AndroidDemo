@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        android:key="pig_pre"
+        android:title="设置"/>
+
+    <PreferenceCategory
+        android:title="基础">
+
+        <CheckBoxPreference
+            android:key="chb_notification"
+            android:title="通知"
+            android:defaultValue="true"
+            android:summary="开启通知以接收最新消息"
+            />
+
+        <EditTextPreference
+            android:key="et_avatar"
+            android:title="用户名"
+            android:defaultValue="lhlhlh111000"
+            android:summary="用户名设置"
+            />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:title="通用">
+
+        <DropDownPreference
+            android:key="theme"
+            android:title="主题颜色"
+            android:summary="更改app主题颜色"
+            android:entries="@array/themes"
+            app:useSimpleSummaryProvider="true"
+            android:entryValues="@array/themes_values"
+            />
+
+        <SwitchPreference
+            android:key="auto_login"
+            android:title="自动登录"
+            android:defaultValue="true"
+            />
+
+        <SeekBarPreference
+            android:key="rang"
+            android:title="滑动范围"
+            android:max="100"
+            android:defaultValue="60"
+            />
+
+    </PreferenceCategory>
+    <PreferenceCategory
+        android:title="其它">
+
+        <ListPreference
+            android:key="hello"
+            android:title="声音"
+            android:summary="设置声音"
+            app:useSimpleSummaryProvider="true"
+            android:entries="@array/themes"
+            android:entryValues="@array/themes_values"
+            />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

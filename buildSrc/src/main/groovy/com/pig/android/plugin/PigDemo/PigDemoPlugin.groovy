@@ -18,6 +18,7 @@ class PigDemoPlugin implements Plugin<Project> {
         project.dependencies.add("implementation", "com.google.android.material:material:1.2.0")
         project.dependencies.add("implementation", "androidx.recyclerview:recyclerview:1.1.0")
         project.dependencies.add("implementation", "org.jetbrains.kotlin:kotlin-stdlib:$project.rootProject.ext.kotlin_version")
+        project.dependencies.add("implementation", "androidx.preference:preference:1.1.1")
 
 
         project.dependencies.add("testImplementation", "junit:junit:4.12")

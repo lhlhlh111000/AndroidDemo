@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.pig.android.demo.case.*
+import com.pig.android.demo.case.preference.SettingFragment
 import com.pig.android.demo.case.proxy.ProxyFragment
 import com.pig.android.demo.extends.go
 import com.pig.android.demo.extends.goFragment
@@ -61,6 +62,9 @@ class MainActivity : AppCompatActivity() {
         })
         items.add(Item("MetaValue") {
             goFragment<MetaFragment>()
+        })
+        items.add(Item("Setting") {
+            goFragment<SettingFragment>()
         })
     }
 
