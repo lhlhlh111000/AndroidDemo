@@ -16,11 +16,12 @@ class InstanceUtil {
 
         fun newInstance(className: String): Any? {
             try {
-                val clazz = Class.forName(className)
-                val constructor = clazz.getConstructor()
-//                val method = clazz.getDeclaredMethod("getInstance")
-//                return method.invoke(null)
-                return constructor.newInstance()
+                val classLoader = PluginClassLoader.INSTANCE.createClassLoader()
+                val clazz = classLoader?.loadClass(className)
+                val constructor = clazz?.let {
+                    it.getConstructor()
+                }
+                return constructor?.newInstance()
             } catch (e: ClassNotFoundException) {
                 e.printStackTrace()
             } catch (e: NoSuchMethodException) {

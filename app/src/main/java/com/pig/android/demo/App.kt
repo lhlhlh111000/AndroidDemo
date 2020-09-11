@@ -13,10 +13,14 @@ import com.pig.android.demo.case.plugin.PluginManager
  */
 class App : Application() {
 
+    companion object {
+        lateinit var INSTANCE : App
+    }
+
     override fun onCreate() {
         super.onCreate()
 
-
+        INSTANCE = this
         PluginManager.INSTANCE.init(this)
     }
 }

@@ -27,24 +27,42 @@ class PluginManager {
         application.registerActivityLifecycleCallbacks(object :
             Application.ActivityLifecycleCallbacks {
             override fun onActivityPaused(p0: Activity) {
+                plugins.forEach{
+                    it.onPause(p0)
+                }
             }
 
             override fun onActivityStarted(p0: Activity) {
+                plugins.forEach{
+                    it.onStart(p0)
+                }
             }
 
             override fun onActivityDestroyed(p0: Activity) {
+                plugins.forEach{
+                    it.onDestroy(p0)
+                }
             }
 
             override fun onActivitySaveInstanceState(p0: Activity, p1: Bundle) {
             }
 
             override fun onActivityStopped(p0: Activity) {
+                plugins.forEach{
+                    it.onStop(p0)
+                }
             }
 
             override fun onActivityCreated(p0: Activity, p1: Bundle?) {
+                plugins.forEach{
+                    it.onCreate(p0)
+                }
             }
 
             override fun onActivityResumed(p0: Activity) {
+                plugins.forEach{
+                    it.onResume(p0)
+                }
             }
         })
 
