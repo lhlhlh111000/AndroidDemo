@@ -35,3 +35,22 @@ dependencies {
 
     compileOnly project(":plugin")
 }
+
+task clearJar(type: Delete) {
+    delete 'build/libs/plugin_test.jar'
+}
+
+task makeJar(type: Copy) {
+    println(project.buildDir.path)
+    def aarFile = file(project.buildDir.path + "/outputs/aar/${project.name}-release.aar")
+    def outputDir = file(project.rootDir.path + "/libs")
+
+    from zipTree(aarFile)
+    into outputDir
+    include 'classes.jar'
+    rename 'classes.jar', "${project.name}.jar"
+    group = 'build'
+    description = '生成jar包'
+}
+
+makeJar.dependsOn(clearJar, build)

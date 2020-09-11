@@ -42,7 +42,9 @@ class ProxyFragment : Fragment() {
                 kHelloActionClass.classLoader,
                 arrayOf(kHelloActionClass),
                 KHelloHandler()) as KHelloAction
-            kHelloAction.helloKotlin(activity!!)
+            activity?.let {
+                kHelloAction.helloKotlin(it)
+            }
         }
     }
 
