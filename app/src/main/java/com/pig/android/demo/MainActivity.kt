@@ -66,6 +66,9 @@ class MainActivity : AppCompatActivity() {
         items.add(Item("Setting") {
             goFragment<SettingFragment>()
         })
+        items.add(Item("InstallCheck") {
+            goFragment<InstallAppFragment>()
+        })
     }
 
     inner class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {
