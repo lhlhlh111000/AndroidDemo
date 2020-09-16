@@ -1,0 +1,27 @@
+apply plugin: 'maven'
+
+uploadArchives {
+
+    repositories {
+        mavenDeployer {
+            repository(url : "http://xxxx/repository/maven-public/") {
+                authentication(userName: "xxxx", password: "xxxxx")
+            }
+            snapshotRepository(url: "http://xxxx/repository/maven-public/") {
+                authentication(userName: "xxxx", password: "xxxxx")
+            }
+            pom.version = "0.0.1"
+            pom.groupId = "com.pig.android.demo"
+            pom.artifactId = "pig-demo"
+        }
+    }
+
+    task androidSourcesJar(type: Jar) {
+        classifier = 'sources'
+        from android.sourceSets.main.java.srcDirs
+    }
+
+    artifacts {
+        archives androidSourcesJar
+    }
+}
