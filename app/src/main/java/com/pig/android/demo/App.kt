@@ -2,6 +2,7 @@ package com.pig.android.demo
 
 import android.app.Application
 import com.pig.android.demo.case.plugin.PluginManager
+import com.pig.android.demo.channel.Channel
 
 /**
  * Title:
@@ -22,5 +23,6 @@ class App : Application() {
 
         INSTANCE = this
         PluginManager.INSTANCE.init(this)
+        Channel.init(this)
     }
 }

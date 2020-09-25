@@ -69,6 +69,9 @@ class MainActivity : AppCompatActivity() {
         items.add(Item("InstallCheck") {
             goFragment<InstallAppFragment>()
         })
+        items.add(Item("Channel") {
+            goFragment<ChannelFragment>()
+        })
     }
 
     inner class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {
