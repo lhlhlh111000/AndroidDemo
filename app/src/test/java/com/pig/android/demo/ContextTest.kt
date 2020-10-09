@@ -1,8 +1,7 @@
 package com.pig.android.demo
 
-import android.content.Context
 import android.os.Build
-import androidx.test.core.app.ApplicationProvider
+import com.pig.android.demo.util.TResUtil
 import org.junit.Assert
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -12,14 +11,11 @@ import org.robolectric.annotation.Config
 private const val FAKE_STRING = "Hello world"
 
 @RunWith(RobolectricTestRunner::class)
-@Config(application = App::class, sdk = [Build.VERSION_CODES.M])
+@Config(application = App::class, sdk = [Build.VERSION_CODES.O_MR1])
 class ContextTest {
-
-    private val context = ApplicationProvider.getApplicationContext<Context>()
 
     @Test
     fun getString() {
-        val str = context.getString(R.string.test_str)
-        Assert.assertEquals(str, FAKE_STRING)
+        Assert.assertEquals(TResUtil.getString(R.string.test_str), FAKE_STRING)
     }
 }
