@@ -42,6 +42,7 @@ class ProxyTest {
             fragment.view?.findViewById<Button>(R.id.btn_proxy)?.performClick()
             val toastStr= ShadowToast.getTextOfLatestToast()
             assertEquals(toastStr, "hello from xxxx")
+//            Shadows.shadowOf(it).peekNextStartedActivity()
         }
     }
 }
