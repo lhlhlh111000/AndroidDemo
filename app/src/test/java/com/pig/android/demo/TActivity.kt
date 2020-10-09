@@ -1,6 +1,8 @@
 package com.pig.android.demo
 
 import android.app.Activity
+import android.content.Context
+import androidx.test.core.app.ApplicationProvider
 
 /**
  * Title:
@@ -12,4 +14,8 @@ import android.app.Activity
  */
 class TActivity : Activity() {
 
+
+    override fun getPackageName(): String {
+        return ApplicationProvider.getApplicationContext<Context>().opPackageName
+    }
 }
