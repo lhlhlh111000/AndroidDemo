@@ -72,6 +72,9 @@ class MainActivity : AppCompatActivity() {
         items.add(Item("Channel") {
             goFragment<ChannelFragment>()
         })
+        items.add(Item("Lifecycle") {
+            goFragment<LifecycleFragment>()
+        })
     }
 
     inner class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {

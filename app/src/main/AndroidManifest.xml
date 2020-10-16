@@ -13,7 +13,9 @@
         android:name=".App"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="com.pig.android.demo.MainActivity">
+        <activity
+            android:name="com.pig.android.demo.MainActivity"
+            android:launchMode="singleTask">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
