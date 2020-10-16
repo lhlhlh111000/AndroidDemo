@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.pig.android.demo.case.*
+import com.pig.android.demo.case.conditionvariable.ConditionVariableFragment
 import com.pig.android.demo.case.preference.SettingFragment
 import com.pig.android.demo.case.proxy.ProxyFragment
 import com.pig.android.demo.extends.go
@@ -74,6 +75,9 @@ class MainActivity : AppCompatActivity() {
         })
         items.add(Item("Lifecycle") {
             goFragment<LifecycleFragment>()
+        })
+        items.add(Item("ConditionVariableFragment") {
+            goFragment<ConditionVariableFragment>()
         })
     }
 
