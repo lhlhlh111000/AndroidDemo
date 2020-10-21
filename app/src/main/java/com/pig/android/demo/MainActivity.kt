@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.pig.android.demo.case.*
 import com.pig.android.demo.case.conditionvariable.ConditionVariableFragment
+import com.pig.android.demo.case.image.build.ImageBuildFragment
 import com.pig.android.demo.case.preference.SettingFragment
 import com.pig.android.demo.case.proxy.ProxyFragment
 import com.pig.android.demo.extends.go
@@ -78,6 +79,9 @@ class MainActivity : AppCompatActivity() {
         })
         items.add(Item("ConditionVariableFragment") {
             goFragment<ConditionVariableFragment>()
+        })
+        items.add(Item("Image Build") {
+            goFragment<ImageBuildFragment>()
         })
     }
 
