@@ -1,4 +1,12 @@
-include ':plugin_test'
-include ':plugin'
-include ':app'
 rootProject.name = "AndroidDemo"
+
+includeModule()
+includeBuild('extra/lint')
+
+
+def includeModule() {
+    include ':task'
+    include ':plugin_test'
+    include ':plugin'
+    include ':app'
+}

@@ -83,6 +83,9 @@ class MainActivity : AppCompatActivity() {
         items.add(Item("Image Build") {
             goFragment<ImageBuildFragment>()
         })
+        items.add(Item("Lint Check") {
+            goFragment<LintCheckFragment>()
+        })
     }
 
     inner class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {
