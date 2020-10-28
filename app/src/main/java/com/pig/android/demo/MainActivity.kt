@@ -86,6 +86,9 @@ class MainActivity : AppCompatActivity() {
         items.add(Item("Lint Check") {
             goFragment<LintCheckFragment>()
         })
+        items.add(Item("Type") {
+            goFragment<TypeFragment>()
+        })
     }
 
     inner class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {
