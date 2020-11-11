@@ -89,6 +89,9 @@ class MainActivity : AppCompatActivity() {
         items.add(Item("Type") {
             goFragment<TypeFragment>()
         })
+        items.add(Item("Native") {
+            goFragment<NativeFragment>()
+        })
     }
 
     inner class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {
