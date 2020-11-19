@@ -1,14 +1,19 @@
 package com.pig.android.demo
 
+import android.Manifest
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.pig.android.demo.case.*
+import com.pig.android.demo.case.camera.CameraFragment
 import com.pig.android.demo.case.conditionvariable.ConditionVariableFragment
 import com.pig.android.demo.case.image.build.ImageBuildFragment
 import com.pig.android.demo.case.preference.SettingFragment
@@ -20,6 +25,10 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
 class MainActivity : AppCompatActivity() {
+
+    companion object {
+        private val CAMERA_PERMISSION = arrayOf(Manifest.permission.CAMERA)
+    }
 
     private lateinit var items: ArrayList<Item>;
 
@@ -92,6 +101,19 @@ class MainActivity : AppCompatActivity() {
         items.add(Item("Native") {
             goFragment<NativeFragment>()
         })
+        items.add(Item("Camera") {
+            if(cameraPermissionGranted()) {
+                goFragment<CameraFragment>()
+            }else {
+                ActivityCompat.requestPermissions(this,
+                    CAMERA_PERMISSION, 1000)
+            }
+        })
+    }
+
+    private fun cameraPermissionGranted() = CAMERA_PERMISSION.all {
+        ContextCompat.checkSelfPermission(
+            this, it) == PackageManager.PERMISSION_GRANTED
     }
 
     inner class MainAdapter: RecyclerView.Adapter<MainViewHolder>() {

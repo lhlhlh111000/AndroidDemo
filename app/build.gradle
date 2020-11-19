@@ -38,6 +38,11 @@ android {
             includeAndroidResources = true
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -64,6 +69,11 @@ dependencies {
     testImplementation 'org.mockito:mockito-inline:3.2.4'
 
     implementation 'com.pig.android.lint:lint'
+
+    def camera_version = "1.0.0-beta12"
+    implementation "androidx.camera:camera-camera2:$camera_version"
+    implementation "androidx.camera:camera-lifecycle:$camera_version"
+    implementation "androidx.camera:camera-view:1.0.0-alpha19"
 }
 
 preBuild.dependsOn(":plugin_test:makeJar")
