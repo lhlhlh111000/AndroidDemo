@@ -2,6 +2,7 @@ package com.pig.android.demo.case.camera
 
 import android.net.Uri
 import android.os.Bundle
+import android.os.Looper
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -72,7 +73,6 @@ class CameraFragment : Fragment() {
             val cameraProvider = cameraProviderFuture.get()
             val cameraSelector = CameraSelector.DEFAULT_FRONT_CAMERA
 
-
             val preview = Preview.Builder()
                 .build()
                 .also {
@@ -86,13 +86,14 @@ class CameraFragment : Fragment() {
                 .build()
                 .also {
                     it.setAnalyzer(cameraExecutor, LumaAnalyzer{ luma ->
-                        Log.d(TAG, "Average luminosity: $luma")
+                        val isMainThread = Looper.myLooper() == Looper.getMainLooper();
+                        Log.d(TAG, "Average luminosity: $luma, isMainThread: $isMainThread")
                     })
                 }
 
             try {
                 cameraProvider.unbindAll()
-                cameraProvider.bindToLifecycle(this,
+                val camera = cameraProvider.bindToLifecycle(this,
                     cameraSelector, preview, imageCapture, imageAnalyzer)
             }catch (e: Exception) {
                 e.printStackTrace()
