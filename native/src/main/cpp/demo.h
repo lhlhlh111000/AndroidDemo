@@ -15,6 +15,9 @@ extern "C" {
 JNIEXPORT jstring JNICALL Java_com_pig_android_jni_ANativeUtil_helloFromJni
   (JNIEnv *, jobject);
 
+JNIEXPORT jint JNICALL Java_com_pig_android_jni_ANativeUtil_staticNum
+        (JNIEnv *, jobject);
+
 #ifdef __cplusplus
 }
 #endif

@@ -28,6 +28,6 @@ class NativeFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        tv_info.text = ANativeUtil().helloFromJni()
+        tv_info.text = ANativeUtil().helloFromJni() + "Static Num: " + ANativeUtil().staticNum()
     }
 }

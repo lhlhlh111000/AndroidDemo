@@ -10,22 +10,20 @@ cmake_minimum_required(VERSION 3.4.1)
 # and CMake builds them for you. When you build your app, Gradle
 # automatically packages shared libraries with your APK.
 
-include_directories(src/main/cpp/include)
+#set(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/output/libs/${CMAKE_BUILD_TYPE}/${ANDROID_ABI})
 
-add_library(demo
+add_library(static-lib
+            STATIC
+            src/main/cpp/test_static.cpp)
+
+add_library(use-static-lib
             SHARED
-            src/main/cpp/demo.cpp)
-
-add_library(static-lib STATIC IMPORTED)
-
-set_target_properties(static-lib
-        PROPERTIES IMPORTED_LOCATION
-        ${CMAKE_SOURCE_DIR}/src/main/jniLibs/${ANDROID_ABI}/libstatic-lib.a)
+            src/main/cpp/use_static_case.cpp)
 
 find_library(log-lib
              log)
 
 # Links your native library against one or more other native libraries.
-target_link_libraries(demo
+target_link_libraries(use-static-lib
                       static-lib
                       ${log-lib})

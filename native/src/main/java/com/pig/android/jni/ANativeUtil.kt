@@ -17,4 +17,6 @@ class ANativeUtil {
     }
 
     external fun helloFromJni(): String
+
+    external fun staticNum(): Int
 }
