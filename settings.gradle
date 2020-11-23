@@ -1,3 +1,4 @@
+include ':opencv'
 include ':native2'
 include ':native'
 rootProject.name = "AndroidDemo"
