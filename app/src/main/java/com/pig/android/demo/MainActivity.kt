@@ -1,13 +1,16 @@
 package com.pig.android.demo
 
 import android.Manifest
+import android.app.Activity
 import android.content.pm.PackageManager
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.OnSystemUiVisibilityChangeListener
 import android.view.ViewGroup
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AlertDialog
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -24,16 +27,33 @@ import com.pig.android.demo.model.Item
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : Activity() {
 
     companion object {
         private val CAMERA_PERMISSION = arrayOf(Manifest.permission.CAMERA)
     }
 
-    private lateinit var items: ArrayList<Item>;
+    private lateinit var items: ArrayList<Item>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        window.decorView
+            .systemUiVisibility = View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+        window.decorView
+            .setOnSystemUiVisibilityChangeListener(OnSystemUiVisibilityChangeListener {
+                var uiOptions =
+                    View.SYSTEM_UI_FLAG_LAYOUT_STABLE or  //布局位于状态栏下方
+                            View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION or  //全屏
+                            View.SYSTEM_UI_FLAG_FULLSCREEN or  //隐藏导航栏
+                            View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or
+                            View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                uiOptions = if (Build.VERSION.SDK_INT >= 19) {
+                    uiOptions or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                } else {
+                    uiOptions or View.SYSTEM_UI_FLAG_LOW_PROFILE
+                }
+                window.decorView.systemUiVisibility = uiOptions
+            })
         setContentView(R.layout.activity_main)
         initItems()
 
@@ -108,6 +128,12 @@ class MainActivity : AppCompatActivity() {
                 ActivityCompat.requestPermissions(this,
                     CAMERA_PERMISSION, 1000)
             }
+        })
+        items.add(Item("FullScreen") {
+            val build = AlertDialog.Builder(this)
+                .setTitle("标题")
+                .setMessage("这是内容")
+                .show()
         })
     }
 
