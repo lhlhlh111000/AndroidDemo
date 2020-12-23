@@ -18,6 +18,9 @@ JNIEXPORT jstring JNICALL Java_com_pig_android_jni_ANativeUtil_helloFromJni
 JNIEXPORT jint JNICALL Java_com_pig_android_jni_ANativeUtil_staticNum
         (JNIEnv *, jobject);
 
+JNIEXPORT jstring JNICALL Java_com_pig_android_jni_ANativeUtil_build
+        (JNIEnv *, jobject, jstring str1, jstring str2);
+
 #ifdef __cplusplus
 }
 #endif

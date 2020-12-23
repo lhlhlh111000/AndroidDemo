@@ -27,7 +27,10 @@ class NativeFragment: Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        val helloFromJni = ANativeUtil().helloFromJni()
+        val staticNum = ANativeUtil().staticNum()
+        val buildStr = ANativeUtil().build("str1", "str2")
 
-        tv_info.text = ANativeUtil().helloFromJni() + "Static Num: " + ANativeUtil().staticNum()
+        tv_info.text = "Hello From Jni:$helloFromJni \n Static Num: $staticNum \n BuildStr: $buildStr"
     }
 }
