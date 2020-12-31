@@ -1,3 +1,4 @@
+include ':resid'
 include ':opencv'
 include ':native2'
 include ':native'
