@@ -17,6 +17,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.pig.android.demo.case.*
 import com.pig.android.demo.case.camera.CameraFragment
+import com.pig.android.demo.case.clazzloader.ClazzLoadFragment
 import com.pig.android.demo.case.conditionvariable.ConditionVariableFragment
 import com.pig.android.demo.case.image.build.ImageBuildFragment
 import com.pig.android.demo.case.preference.SettingFragment
@@ -134,6 +135,10 @@ class MainActivity : Activity() {
                 .setTitle("标题")
                 .setMessage("这是内容")
                 .show()
+        })
+
+        items.add(Item("Clazzload") {
+            goFragment<ClazzLoadFragment>()
         })
     }
 
