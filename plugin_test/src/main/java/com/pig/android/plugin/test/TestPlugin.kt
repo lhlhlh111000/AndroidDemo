@@ -3,7 +3,6 @@ package com.pig.android.plugin.test
 import android.app.Activity
 import android.app.Application
 import android.util.Log
-import android.widget.Toast
 import com.pig.android.plugin.Plugin
 
 /**
@@ -49,6 +48,6 @@ class TestPlugin : Plugin {
     }
 
     override fun action(activity: Activity) {
-        Toast.makeText(activity, "Hello", Toast.LENGTH_SHORT).show()
+        ActionHandler.process(activity)
     }
 }
