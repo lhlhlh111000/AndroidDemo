@@ -20,6 +20,7 @@ import com.pig.android.demo.case.camera.CameraFragment
 import com.pig.android.demo.case.clazzloader.ClazzLoadFragment
 import com.pig.android.demo.case.conditionvariable.ConditionVariableFragment
 import com.pig.android.demo.case.image.build.ImageBuildFragment
+import com.pig.android.demo.case.plugin.PluginFragment
 import com.pig.android.demo.case.preference.SettingFragment
 import com.pig.android.demo.case.proxy.ProxyFragment
 import com.pig.android.demo.extends.go
@@ -64,6 +65,10 @@ class MainActivity : Activity() {
 
     private fun initItems() {
         items = ArrayList<Item>()
+
+        items.add(Item("Plugin") {
+            goFragment<PluginFragment>()
+        })
 
         items.add(Item("Notification") {
             go<NotificationActivity>()

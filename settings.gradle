@@ -1,3 +1,4 @@
+include ':plugin_test_2'
 include ':resid'
 include ':opencv'
 include ':native2'

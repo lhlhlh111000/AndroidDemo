@@ -71,4 +71,10 @@ class PluginManager {
             plugins.add(it as Plugin)
         }
     }
+
+    fun callAction(activity: Activity) {
+        plugins.forEach{
+            it.action(activity)
+        }
+    }
 }

@@ -1,0 +1,67 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+
+android {
+    compileSdkVersion 30
+    buildToolsVersion "30.0.2"
+
+    defaultConfig {
+        minSdkVersion 21
+        targetSdkVersion 30
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles "consumer-rules.pro"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    compileOnly project(":plugin")
+}
+
+task clearJar(type: Delete) {
+    delete 'build/libs/plugin_test.jar'
+}
+
+task copyJar(type: Copy) {
+    println(project.buildDir.path)
+    def aarFile = file(project.buildDir.path + "/outputs/aar/${project.name}-release.aar")
+    def outputDir = file(project.rootDir.path + "/libs")
+
+    from zipTree(aarFile)
+    into outputDir
+    include 'classes.jar'
+    rename 'classes.jar', "${project.name}.jar"
+    group = 'build'
+    description = '生成jar包'
+}
+
+task makeJar(type: Exec) {
+    println(System.getenv("ANDROID_HOME") + "/build-tools/" + project.android.buildToolsVersion + "/dx")
+    def dx = System.getenv("ANDROID_HOME") + "/build-tools/" + project.android.buildToolsVersion + "/dx"
+    def jarDir = file(project.rootDir.path + "/libs")
+    def inputFileName = "${project.name}.jar"
+    def outputFileName = "${project.name}_dx_2.jar"
+
+    workingDir "${jarDir}"
+    commandLine 'sh', '-c', "${dx} --dex --output=${outputFileName} ${inputFileName}"
+}
+
+makeJar.dependsOn(clearJar, build, copyJar)

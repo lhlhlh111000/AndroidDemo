@@ -3,7 +3,7 @@ package com.pig.android.plugin.test
 import android.app.Activity
 import android.app.Application
 import android.util.Log
-import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.pig.android.plugin.Plugin
 
 /**
@@ -49,6 +49,9 @@ class TestPlugin : Plugin {
     }
 
     override fun action(activity: Activity) {
-        Toast.makeText(activity, "Hello", Toast.LENGTH_SHORT).show()
+        AlertDialog.Builder(activity)
+            .setTitle("这是标题啊")
+            .setMessage("这是提示内容啊！")
+            .show()
     }
 }

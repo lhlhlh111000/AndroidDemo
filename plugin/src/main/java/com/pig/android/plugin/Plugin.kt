@@ -26,4 +26,6 @@ interface Plugin {
     fun onPause(activity: Activity)
 
     fun onDestroy(activity: Activity)
+
+    fun action(activity: Activity)
 }
