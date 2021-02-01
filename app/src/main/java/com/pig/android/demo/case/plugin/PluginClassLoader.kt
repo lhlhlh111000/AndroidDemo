@@ -18,9 +18,8 @@ class PluginClassLoader {
         val INSTANCE = PluginClassLoader()
     }
 
-    fun createClassLoader() : DexClassLoader? {
+    fun createClassLoader(fileName: String) : DexClassLoader? {
         val cacheFile = App.INSTANCE.cacheDir
-        val fileName = "plugin_test_dx.jar";
         val jarFilePath = cacheFile.absolutePath + File.separator + fileName
         val jarFile = File(jarFilePath)
 
@@ -38,6 +37,10 @@ class PluginClassLoader {
         }
 
         return null
+    }
+
+    fun createClassLoader() : DexClassLoader? {
+        return createClassLoader("plugin_test_dx.jar")
     }
 
     private fun copyFiles(

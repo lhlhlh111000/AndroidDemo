@@ -1,5 +1,6 @@
 package com.pig.android.demo.case.plugin
 
+import dalvik.system.DexClassLoader
 import java.lang.reflect.InvocationTargetException
 
 /**
@@ -17,6 +18,26 @@ class InstanceUtil {
         fun newInstance(className: String): Any? {
             try {
                 val classLoader = PluginClassLoader.INSTANCE.createClassLoader()
+                val clazz = classLoader?.loadClass(className)
+                val constructor = clazz?.let {
+                    it.getConstructor()
+                }
+                return constructor?.newInstance()
+            } catch (e: ClassNotFoundException) {
+                e.printStackTrace()
+            } catch (e: NoSuchMethodException) {
+                e.printStackTrace()
+            } catch (e: IllegalAccessException) {
+                e.printStackTrace()
+            } catch (e: InvocationTargetException) {
+                e.printStackTrace()
+            }
+
+            return null
+        }
+
+        fun newInstance(className: String, classLoader: DexClassLoader): Any? {
+            try {
                 val clazz = classLoader?.loadClass(className)
                 val constructor = clazz?.let {
                     it.getConstructor()

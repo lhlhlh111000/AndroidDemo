@@ -33,5 +33,21 @@ class PluginFragment : Fragment() {
                 PluginManager.INSTANCE.callAction(it)
             }
         }
+
+        btn_click_2.setOnClickListener {
+            applyFunc()
+        }
+    }
+
+    private fun applyFunc() {
+        val clazzLoader = PluginClassLoader.INSTANCE.createClassLoader("plugin_test_2_dx_2.jar")
+        clazzLoader?.let {
+            val pluginTest = InstanceUtil.newInstance(PluginManager.PLUGIN_CLASS_NAME, it)
+
+            val pluginManagerClazz = PluginManager::class.java
+            val field = pluginManagerClazz.getDeclaredField("plugin")
+            field.isAccessible = true
+            field.set(PluginManager.INSTANCE, pluginTest)
+        }
     }
 }
