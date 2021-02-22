@@ -19,6 +19,7 @@ import com.pig.android.demo.case.*
 import com.pig.android.demo.case.camera.CameraFragment
 import com.pig.android.demo.case.clazzloader.ClazzLoadFragment
 import com.pig.android.demo.case.conditionvariable.ConditionVariableFragment
+import com.pig.android.demo.case.delegation.DelegateTestFragment
 import com.pig.android.demo.case.image.build.ImageBuildFragment
 import com.pig.android.demo.case.plugin.PluginFragment
 import com.pig.android.demo.case.preference.SettingFragment
@@ -115,7 +116,7 @@ class MainActivity : Activity() {
         items.add(Item("ConditionVariableFragment") {
             goFragment<ConditionVariableFragment>()
         })
-        items.add(Item("Image Build") {
+        items.add(Item("Image Build") {2
             goFragment<ImageBuildFragment>()
         })
         items.add(Item("Lint Check") {
@@ -144,6 +145,10 @@ class MainActivity : Activity() {
 
         items.add(Item("Clazzload") {
             goFragment<ClazzLoadFragment>()
+        })
+
+        items.add(Item("Delegation") {
+            goFragment<DelegateTestFragment>()
         })
     }
 
