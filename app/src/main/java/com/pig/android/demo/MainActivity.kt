@@ -150,6 +150,10 @@ class MainActivity : Activity() {
         items.add(Item("Delegation") {
             goFragment<DelegateTestFragment>()
         })
+
+        items.add(Item("CountDownLatch") {
+            goFragment<CountDownLatchFragment>()
+        })
     }
 
     private fun cameraPermissionGranted() = CAMERA_PERMISSION.all {
