@@ -43,5 +43,66 @@ class CountDownLatchFragment : Fragment() {
                 }
                 .show()
         }
+
+        btn_click_2.setOnClickListener {
+            val service = Executors.newCachedThreadPool()
+            val countDownLatch1 = CountDownLatch(1)
+            val countDownLatch2 = CountDownLatch(1)
+            val countDownLatch3 = CountDownLatch(1)
+
+            val runnable1 = Runnable {
+                countDownLatch1.await()
+                activity?.runOnUiThread{
+                    AlertDialog.Builder(activity)
+                        .setTitle("hello1")
+                        .setMessage("this is content")
+                        .setPositiveButton("确定") { dialog : DialogInterface, _: Int ->
+                            dialog.dismiss()
+                            countDownLatch2.countDown()
+                        }
+                        .show()
+                }
+            }
+
+            val runnable2 = Runnable {
+                countDownLatch2.await()
+                activity?.runOnUiThread{
+                    AlertDialog.Builder(activity)
+                        .setTitle("hello2")
+                        .setMessage("this is content")
+                        .setPositiveButton("确定") { dialog : DialogInterface, _: Int ->
+                            dialog.dismiss()
+                            countDownLatch3.countDown()
+                        }
+                        .show()
+                }
+            }
+
+            val runnable3 = Runnable {
+                countDownLatch3.await()
+                activity?.runOnUiThread{
+                    AlertDialog.Builder(activity)
+                        .setTitle("hello3")
+                        .setMessage("this is content")
+                        .setPositiveButton("确定") { dialog : DialogInterface, _: Int ->
+                            dialog.dismiss()
+                        }
+                        .show()
+                }
+            }
+
+            service.execute(runnable1)
+            service.execute(runnable2)
+            service.execute(runnable3)
+
+            AlertDialog.Builder(activity)
+                .setTitle("hello")
+                .setMessage("this is content")
+                .setPositiveButton("确定") { dialog : DialogInterface, _: Int ->
+                    dialog.dismiss()
+                    countDownLatch1.countDown()
+                }
+                .show()
+        }
     }
 }
