@@ -66,4 +66,15 @@ class PluginClassLoader {
             }
         }
     }
+
+    fun setupInterceptClassLoader() {
+        copyFiles("plugin_test_2_dx_2.jar", File(App.INSTANCE.cacheDir.absolutePath + File.separator + "plugin_test_2_dx_2.jar"))
+
+        val pathClassLoader = App.INSTANCE::class.java.classLoader
+        val interceptClassLoader = InterceptClassLoader(pathClassLoader.parent)
+
+        val parentField =  ClassLoader::class.java.getDeclaredField("parent")
+        parentField.isAccessible = true;
+        parentField.set(pathClassLoader, interceptClassLoader)
+    }
 }

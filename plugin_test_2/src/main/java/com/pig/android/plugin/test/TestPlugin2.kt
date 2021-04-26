@@ -13,10 +13,10 @@ import com.pig.android.plugin.Plugin
  * @author cqt
  * @version 2020/9/11
  */
-class TestPlugin : Plugin {
+class TestPlugin2 : Plugin {
 
     companion object {
-        val TAG = TestPlugin::class.java.simpleName
+        val TAG = TestPlugin2::class.java.simpleName
     }
 
     override fun initApplication(application: Application) {
@@ -48,6 +48,8 @@ class TestPlugin : Plugin {
     }
 
     override fun action(activity: Activity) {
+//        ActionHandler.process(activity)
+
         ActionHandler2.process(activity)
     }
 }

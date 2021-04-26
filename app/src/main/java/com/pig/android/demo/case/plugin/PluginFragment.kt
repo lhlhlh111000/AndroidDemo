@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.pig.android.demo.App
 import com.pig.android.demo.R
 import kotlinx.android.synthetic.main.fragment_button.*
+import java.lang.reflect.InvocationTargetException
 
 /**
  * Title:
@@ -35,7 +37,17 @@ class PluginFragment : Fragment() {
         }
 
         btn_click_2.setOnClickListener {
-            applyFunc()
+//            applyFunc()
+
+
+            PluginClassLoader.INSTANCE.setupInterceptClassLoader()
+
+            val pluginTest = newInstance("com.pig.android.plugin.test.TestPlugin2")
+
+            val pluginManagerClazz = PluginManager::class.java
+            val field = pluginManagerClazz.getDeclaredField("plugin")
+            field.isAccessible = true
+            field.set(PluginManager.INSTANCE, pluginTest)
         }
     }
 
@@ -49,5 +61,26 @@ class PluginFragment : Fragment() {
             field.isAccessible = true
             field.set(PluginManager.INSTANCE, pluginTest)
         }
+    }
+
+    private fun newInstance(className: String): Any? {
+        try {
+            val classLoader = App.INSTANCE.classLoader
+            val clazz = classLoader?.loadClass(className)
+            val constructor = clazz?.let {
+                it.getConstructor()
+            }
+            return constructor?.newInstance()
+        } catch (e: ClassNotFoundException) {
+            e.printStackTrace()
+        } catch (e: NoSuchMethodException) {
+            e.printStackTrace()
+        } catch (e: IllegalAccessException) {
+            e.printStackTrace()
+        } catch (e: InvocationTargetException) {
+            e.printStackTrace()
+        }
+
+        return null
     }
 }
