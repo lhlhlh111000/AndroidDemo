@@ -42,7 +42,7 @@ class PluginFragment : Fragment() {
 
             PluginClassLoader.INSTANCE.setupInterceptClassLoader()
 
-            val pluginTest = newInstance("com.pig.android.plugin.test.TestPlugin2")
+            val pluginTest = newInstance("com.pig.android.plugin.test.TestPluginPlugin")
 
             val pluginManagerClazz = PluginManager::class.java
             val field = pluginManagerClazz.getDeclaredField("plugin")

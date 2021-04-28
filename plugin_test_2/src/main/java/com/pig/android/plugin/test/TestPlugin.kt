@@ -48,6 +48,6 @@ class TestPlugin : Plugin {
     }
 
     override fun action(activity: Activity) {
-        ActionHandler2.process(activity)
+        ActionHandler.process(activity)
     }
 }

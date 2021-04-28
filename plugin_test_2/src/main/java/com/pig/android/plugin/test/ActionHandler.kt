@@ -1,6 +1,9 @@
 package com.pig.android.plugin.test
 
 import android.app.Activity
+import android.app.Dialog
+import android.content.DialogInterface
+import android.view.Window
 import androidx.appcompat.app.AlertDialog
 
 /**
@@ -16,9 +19,20 @@ class ActionHandler {
     companion object {
 
         fun process(activity: Activity) {
+
+            val listener = DialogInterface.OnClickListener { dialog, _ ->
+                dialog.dismiss()
+
+                val aDialog = Dialog(activity)
+                aDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+                aDialog.setContentView(R.layout.dialog_plugin)
+                aDialog.show()
+            }
+
             AlertDialog.Builder(activity)
-                .setTitle("这是标题啊")
+                .setTitle("这是标题啊1")
                 .setMessage("这是提示内容啊！")
+                .setPositiveButton("确定", listener)
                 .show()
         }
     }
