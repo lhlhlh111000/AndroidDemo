@@ -2,6 +2,8 @@ apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
+apply plugin: 'com.pig.android.plugin'
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
