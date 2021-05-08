@@ -52,7 +52,7 @@ public class CoroutineFragment : Fragment() {
                 while (i < 100) {
                     Log.d(TAG, "Global coroutine $i")
 
-                    Thread.sleep(1000)
+                    delay(1000)
                     i++
                 }
 
@@ -70,10 +70,10 @@ public class CoroutineFragment : Fragment() {
                 var i=0
                 withContext(Dispatchers.IO) {
                     while (i < 20) {
-                        ensureActive()
+//                        ensureActive()
                         Log.d(TAG, "Coroutine Scope $i")
 
-                        Thread.sleep(1000)
+                        delay(1000)
                         i++
                     }
                 }
