@@ -64,12 +64,13 @@ public class CoroutineFragment : Fragment() {
     private var uiScope: CoroutineScope? = null
 
     private fun coroutineScope() {
-        uiScope = CoroutineScope(Dispatchers.Main)
+        uiScope = CoroutineScope(Dispatchers.Main + Job())
         uiScope?.let {
             it.launch {
                 var i=0
                 withContext(Dispatchers.IO) {
                     while (i < 20) {
+                        ensureActive()
                         Log.d(TAG, "Coroutine Scope $i")
 
                         Thread.sleep(1000)
