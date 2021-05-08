@@ -19,6 +19,7 @@ import com.pig.android.demo.case.*
 import com.pig.android.demo.case.camera.CameraFragment
 import com.pig.android.demo.case.clazzloader.ClazzLoadFragment
 import com.pig.android.demo.case.conditionvariable.ConditionVariableFragment
+import com.pig.android.demo.case.coroutine.CoroutineFragment
 import com.pig.android.demo.case.delegation.DelegateTestFragment
 import com.pig.android.demo.case.image.build.ImageBuildFragment
 import com.pig.android.demo.case.plugin.PluginFragment
@@ -66,6 +67,10 @@ class MainActivity : Activity() {
 
     private fun initItems() {
         items = ArrayList<Item>()
+
+        items.add(Item("Coroutine") {
+            goFragment<CoroutineFragment>()
+        })
 
         items.add(Item("Plugin") {
             goFragment<PluginFragment>()
