@@ -10,7 +10,7 @@ import com.pig.android.demo.R
 import kotlinx.android.synthetic.main.fragment_button.*
 import kotlinx.coroutines.*
 
-public class CoroutineFragment : Fragment() {
+class CoroutineFragment : Fragment() {
 
     companion object {
         val TAG: String = CoroutineFragment.javaClass.simpleName
