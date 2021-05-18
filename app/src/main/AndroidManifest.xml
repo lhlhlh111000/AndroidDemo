@@ -35,6 +35,7 @@
             android:name=".case.AutoCompleteInputActivity"
             android:configChanges="orientation|screenSize|keyboardHidden"/>
         <activity android:name=".ContainerActivity"/>
+        <activity android:name=".FullContainerActivity"/>
     </application>
 
 </manifest>

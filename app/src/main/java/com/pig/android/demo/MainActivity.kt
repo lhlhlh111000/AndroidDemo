@@ -21,12 +21,14 @@ import com.pig.android.demo.case.clazzloader.ClazzLoadFragment
 import com.pig.android.demo.case.conditionvariable.ConditionVariableFragment
 import com.pig.android.demo.case.coroutine.CoroutineFragment
 import com.pig.android.demo.case.delegation.DelegateTestFragment
+import com.pig.android.demo.case.force.ForceFragment
 import com.pig.android.demo.case.image.build.ImageBuildFragment
 import com.pig.android.demo.case.plugin.PluginFragment
 import com.pig.android.demo.case.preference.SettingFragment
 import com.pig.android.demo.case.proxy.ProxyFragment
 import com.pig.android.demo.extends.go
 import com.pig.android.demo.extends.goFragment
+import com.pig.android.demo.extends.goFullFragment
 import com.pig.android.demo.model.Item
 import kotlinx.android.synthetic.main.activity_main.*
 import java.util.*
@@ -67,6 +69,10 @@ class MainActivity : Activity() {
 
     private fun initItems() {
         items = ArrayList<Item>()
+
+        items.add(Item("Force") {
+            goFullFragment<ForceFragment>()
+        })
 
         items.add(Item("Coroutine") {
             goFragment<CoroutineFragment>()

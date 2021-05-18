@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity
  * @author cqt
  * @version 2020/8/31
  */
-class ContainerActivity : AppCompatActivity() {
+open class ContainerActivity : AppCompatActivity() {
 
     companion object{
         public const val FRAGMENT_NAME = "fragment_name"
